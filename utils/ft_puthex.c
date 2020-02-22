@@ -6,13 +6,13 @@
 /*   By: omimouni <omimouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 18:42:56 by omimouni          #+#    #+#             */
-/*   Updated: 2020/02/17 16:52:03 by omimouni         ###   ########.fr       */
+/*   Updated: 2020/02/22 07:49:05 by omimouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_utils.h"
 
-int	csize(int n)
+int		csize(int n)
 {
 	int	i;
 
@@ -32,11 +32,11 @@ void	ft_printhex(char *str, int cap)
 	i = 0;
 	while (str[i] != '\0')
 	{
-		if(str[i] >= 0 && str[i] <= 9)
+		if (str[i] >= 0 && str[i] <= 9)
 			ft_putchar(str[i] + '0');
 		else
 		{
-			if(cap)
+			if (cap)
 				ft_putchar(str[i] - 10 + 'A');
 			else
 				ft_putchar(str[i] - 10 + 'a');

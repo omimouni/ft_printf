@@ -6,15 +6,17 @@
 /*   By: omimouni <omimouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 22:00:25 by omimouni          #+#    #+#             */
-/*   Updated: 2020/02/18 21:45:16 by omimouni         ###   ########.fr       */
+/*   Updated: 2020/02/22 07:44:25 by omimouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#define T "Hello Wolrd! %% okay\n"
 
-void	prints(t_config c)
+void		prints(t_config c)
 {
-	printf("\n\nflag = %c, w = %d, p = %d, spec = %c\n", c.flag,c.width, c.precision, c.specifier);
+	printf("\n\nflag = %c, w = %d, p = %d, spec = %c\n ; i = %d",
+		c.flag, c.width, c.precision, c.specifier, c.i);
 }
 
 t_config	ft_init_config(va_list *vargs)
@@ -31,31 +33,27 @@ t_config	ft_init_config(va_list *vargs)
 	return (tmp);
 }
 
-void	ft_parse(char *format, t_config *con)
+void		ft_parse(char *format, t_config *con)
 {
 	con->i++;
-	if(format[con->i] == '-' || format[con->i] == '0')
+	if (format[con->i] == '-' || format[con->i] == '0')
 		con->flag = format[con->i++];
 	ft_width(format, con);
 	ft_precision(format, con);
 	ft_specifier(format, con);
-	if	(con->specifier == 'd' || con->specifier == 'i' ||
-		con->specifier == 'x' || con->specifier == 'X' ||
-		con->specifier == 'u')
-		ft_putn(con);
 	prints(*con);
 }
 
-int	ft_printf(char const *format, ...)
+int			ft_printf(char const *format, ...)
 {
-	va_list vargs;
-	t_config con;
-	
+	va_list		vargs;
+	t_config	con;
+
 	con = ft_init_config(&vargs);
 	va_start(vargs, format);
 	while (format[con.i])
 	{
-		if(format[con.i] == '%')
+		if (format[con.i] == '%')
 			ft_parse((char *)format, &con);
 		else
 			ft_putchar(format[con.i++]);
@@ -64,15 +62,8 @@ int	ft_printf(char const *format, ...)
 	return (con.ret);
 }
 
-
-#define T "%010.6dn\n", 123
-int	main(void)
+int			main(void)
 {
-	int r;
-
-	//r = ft_printf("Hello %0*.*s World!",6,9,"hello");
-	//printf("\n-> return = %d", r);	
 	printf(T);
 	ft_printf(T);
-
 }

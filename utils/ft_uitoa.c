@@ -6,7 +6,7 @@
 /*   By: omimouni <omimouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 18:22:29 by omimouni          #+#    #+#             */
-/*   Updated: 2020/02/10 18:26:21 by omimouni         ###   ########.fr       */
+/*   Updated: 2020/02/22 07:50:27 by omimouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,13 @@ int		culen(unsigned int n)
 
 	i = 0;
 	while (n > 0)
-	{		
+	{
 		n /= 10;
 		i++;
 	}
 	return (i);
 }
+
 char	*ft_uitoa(unsigned int n)
 {
 	char			*str;
@@ -34,7 +35,7 @@ char	*ft_uitoa(unsigned int n)
 	if (!(str = (char *)malloc((len + 1) * sizeof(char))))
 		return (NULL);
 	*(str + len-- + 1) = '\0';
-	if(n == 0)
+	if (n == 0)
 		*(str) = '0';
 	while (n > 0)
 	{

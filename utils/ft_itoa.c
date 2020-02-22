@@ -6,7 +6,7 @@
 /*   By: omimouni <omimouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 02:47:04 by omimouni          #+#    #+#             */
-/*   Updated: 2020/02/10 04:13:08 by omimouni         ###   ########.fr       */
+/*   Updated: 2020/02/22 07:47:56 by omimouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		set_sign(unsigned int *tmp, int n)
 {
-	if(n < 0)
+	if (n < 0)
 	{
 		*tmp = -n;
 		return (1);
@@ -29,7 +29,7 @@ int		clen(unsigned int n)
 
 	i = 0;
 	while (n > 0)
-	{		
+	{
 		n /= 10;
 		i++;
 	}
@@ -49,7 +49,7 @@ char	*ft_itoa(int n)
 	if (!(str = (char *)malloc((len + sign + 1) * sizeof(char))))
 		return (NULL);
 	*(str + len-- + sign + 1) = '\0';
-	if(sign)
+	if (sign)
 		*str = '-';
 	while (tmp > 0)
 	{
@@ -57,7 +57,7 @@ char	*ft_itoa(int n)
 		len--;
 		tmp /= 10;
 	}
-	if(n == 0)
+	if (n == 0)
 		*(str + sign) = '0';
 	return (str);
 }
