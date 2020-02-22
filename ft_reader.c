@@ -6,7 +6,7 @@
 /*   By: omimouni <omimouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 15:00:29 by omimouni          #+#    #+#             */
-/*   Updated: 2020/02/22 07:45:47 by omimouni         ###   ########.fr       */
+/*   Updated: 2020/02/22 13:11:17 by omimouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	ft_precision(char *format, t_config *con)
 				sum = sum * 10 + (format[con->i++] - '0');
 			con->precision = sum;
 		}
+		con->has_precision = 1;
 	}
 }
 
@@ -55,6 +56,14 @@ void	ft_specifier(char *format, t_config *con)
 	if (format[con->i] == 'd' || format[con->i] == 'c' ||
 		format[con->i] == 's' || format[con->i] == 'u' ||
 		format[con->i] == 'x' || format[con->i] == 'X' ||
-		format[con->i] == 'i' || format[con->i] == '%')
+		format[con->i] == 'i' || format[con->i] == '%' ||
+		format[con->i] == 'p')
 		con->specifier = format[con->i++];
+}
+
+void	ft_reader(char *format, t_config *con)
+{
+	ft_width(format, con);
+	ft_precision(format, con);
+	ft_specifier(format, con);
 }

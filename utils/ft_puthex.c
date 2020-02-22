@@ -6,13 +6,13 @@
 /*   By: omimouni <omimouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 18:42:56 by omimouni          #+#    #+#             */
-/*   Updated: 2020/02/22 07:49:05 by omimouni         ###   ########.fr       */
+/*   Updated: 2020/02/22 14:04:54 by omimouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_utils.h"
 
-int		csize(int n)
+int		ft_csize(size_t n)
 {
 	int	i;
 
@@ -25,12 +25,12 @@ int		csize(int n)
 	return (i);
 }
 
-void	ft_printhex(char *str, int cap)
+void	ft_printhex(char *str, int cap, int length)
 {
 	int	i;
 
 	i = 0;
-	while (str[i] != '\0')
+	while (i < length)
 	{
 		if (str[i] >= 0 && str[i] <= 9)
 			ft_putchar(str[i] + '0');
@@ -43,16 +43,15 @@ void	ft_printhex(char *str, int cap)
 		}
 		i++;
 	}
-	free(str);
 }
 
-char	*ft_itoh(unsigned int n)
+char	*ft_itoh(size_t n)
 {
 	int		len;
 	int		i;
 	char	*str;
 
-	len = csize(n);
+	len = ft_csize(n);
 	i = len;
 	if (!(str = (char *)malloc(sizeof(char) * (i + 1))))
 		return (0);
@@ -63,5 +62,7 @@ char	*ft_itoh(unsigned int n)
 		n /= 16;
 		i--;
 	}
+	if (n == 0)
+		*(str + 1) = '0';
 	return (str);
 }
