@@ -6,7 +6,7 @@
 /*   By: omimouni <omimouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 18:42:56 by omimouni          #+#    #+#             */
-/*   Updated: 2020/02/22 14:04:54 by omimouni         ###   ########.fr       */
+/*   Updated: 2020/02/23 14:46:07 by omimouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,14 @@ int		ft_csize(size_t n)
 	int	i;
 
 	i = 0;
+	if (n == 0)
+		return (1);
 	while (n > 0)
 	{
 		n /= 16;
 		i++;
 	}
+
 	return (i);
 }
 
@@ -52,7 +55,7 @@ char	*ft_itoh(size_t n)
 	char	*str;
 
 	len = ft_csize(n);
-	i = len;
+	i = n == 0 ? 1 : len;
 	if (!(str = (char *)malloc(sizeof(char) * (i + 1))))
 		return (0);
 	str[i--] = '\0';
@@ -63,6 +66,6 @@ char	*ft_itoh(size_t n)
 		i--;
 	}
 	if (n == 0)
-		*(str + 1) = '0';
+		str[i] = 0;
 	return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: omimouni <omimouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 22:00:48 by omimouni          #+#    #+#             */
-/*   Updated: 2020/02/22 13:41:24 by omimouni         ###   ########.fr       */
+/*   Updated: 2020/02/23 14:53:33 by omimouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,5 @@ void			ft_reader(char *format, t_config *con);
 void			ft_show(t_config *con);
 void			ft_show_pointer(t_config *con);
 void			ft_show_string(t_config *con);
+void			ft_show_hex(t_config *con);
 #endif

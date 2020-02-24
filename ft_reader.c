@@ -6,7 +6,7 @@
 /*   By: omimouni <omimouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 15:00:29 by omimouni          #+#    #+#             */
-/*   Updated: 2020/02/22 13:11:17 by omimouni         ###   ########.fr       */
+/*   Updated: 2020/02/23 18:55:52 by omimouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,18 @@ void	ft_width(char *format, t_config *con)
 	if (format[con->i] == '*')
 	{
 		con->width = va_arg(*(con->vargs), int);
+		if (con->width < 0)
+		{
+			con->flag = '-';
+			con->width *= -1;
+		}
 		con->i++;
 	}
 	else
 	{
 		sum = 0;
+		while (format[con->i] == '-' || format[con->i] == '0')
+			con->i++;
 		while (format[con->i] >= '0' && format[con->i] <= '9')
 			sum = (sum * 10) + (format[con->i++] - '0');
 		con->width = sum;
@@ -48,6 +55,8 @@ void	ft_precision(char *format, t_config *con)
 			con->precision = sum;
 		}
 		con->has_precision = 1;
+		if (con->precision < 0)
+			con->has_precision = 0;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: omimouni <omimouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 09:17:54 by omimouni          #+#    #+#             */
-/*   Updated: 2020/02/22 13:40:48 by omimouni         ###   ########.fr       */
+/*   Updated: 2020/02/23 21:31:17 by omimouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	ft_parse(char *format, t_config *con)
 		ft_show_pointer(con);
 	else if (con->specifier == 's')
 		ft_show_string(con);
+	else if (con->specifier == 'x' || con->specifier == 'X')
+		ft_show_hex(con);
 	else
 		ft_show(con);
 }

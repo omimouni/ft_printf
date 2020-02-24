@@ -6,12 +6,21 @@
 /*   By: omimouni <omimouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 22:00:25 by omimouni          #+#    #+#             */
-/*   Updated: 2020/02/22 14:05:22 by omimouni         ###   ########.fr       */
+/*   Updated: 2020/02/24 14:21:56 by omimouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#define T "s%xn\n", 10
+#define T "%1000c", 'a'
+
+void		ft_cleanup(t_config *con)
+{
+	con->flag = 0;
+	con->width = 0;
+	con->precision = 0;
+	con->specifier = 0;
+	con->has_precision = 0;
+}
 
 t_config	ft_init_config(va_list *vargs)
 {
@@ -38,7 +47,10 @@ int			ft_printf(char const *format, ...)
 	while (format[con.i])
 	{
 		if (format[con.i] == '%')
+		{
 			ft_parse((char *)format, &con);
+			ft_cleanup(&con);
+		}
 		else
 		{
 			ft_putchar(format[con.i++]);
@@ -49,12 +61,9 @@ int			ft_printf(char const *format, ...)
 	return (con.ret);
 }
 
-int			main(void)
-{
-	int	r;
-	int	f;
-	r = printf(T);
-	f = ft_printf(T);
-
-	printf("\n-------\n%d %d\n",r, f);
-}
+// int main()
+// {
+// 	printf(T);
+// 	ft_printf(T);
+// 	system("leaks a.out");
+// }
