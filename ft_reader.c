@@ -6,7 +6,7 @@
 /*   By: omimouni <omimouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 15:00:29 by omimouni          #+#    #+#             */
-/*   Updated: 2020/02/27 11:35:41 by omimouni         ###   ########.fr       */
+/*   Updated: 2020/02/27 13:57:46 by omimouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,11 @@ void	ft_reader(char *format, t_config *con)
 void	ft_parse(char *format, t_config *con)
 {
 	con->i++;
+	if (format[con->i] == '0' && format[con->i + 1] == '-')
+	{
+		con->flag = '-';
+		con->i += 2;
+	}
 	if (format[con->i] == '-' || format[con->i] == '0')
 		con->flag = format[con->i++];
 	ft_reader(format, con);

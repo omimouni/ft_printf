@@ -6,12 +6,11 @@
 /*   By: omimouni <omimouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 22:00:25 by omimouni          #+#    #+#             */
-/*   Updated: 2020/02/27 12:59:24 by omimouni         ###   ########.fr       */
+/*   Updated: 2020/02/27 14:06:03 by omimouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#define T "%15.7d", -100
 
 void		ft_cleanup(t_config *con)
 {
@@ -67,17 +66,3 @@ int			ft_printf(char const *format, ...)
 	va_end(vargs);
 	return (con.ret);
 }
-
-// int main()
-// {
-// 	int r, l;
-
-// 	printf("x");
-// 	r = printf(T);
-// 	printf("x");
-// 	printf("\n");	
-// 	printf("x");
-// 	l = ft_printf(T);	
-// 	printf("x");
-// 	printf("\n------\n og : %d ft : %d \n", r, l);
-// }

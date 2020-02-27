@@ -6,7 +6,7 @@
 /*   By: omimouni <omimouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/23 14:52:53 by omimouni          #+#    #+#             */
-/*   Updated: 2020/02/27 12:01:17 by omimouni         ###   ########.fr       */
+/*   Updated: 2020/02/27 13:40:08 by omimouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	ft_show_hex(t_config *con)
 	int				n_zeroes;
 
 	tmp = va_arg(*(con->vargs), unsigned int);
-	length = ft_csize(tmp);
+	length = ft_hexlen(tmp);
 	cap = con->specifier == 'x' ? 0 : 1;
 	n_zeroes = 0;
 	ft_show_hex_flag(con, length, &n_zeroes);

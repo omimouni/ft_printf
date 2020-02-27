@@ -6,13 +6,13 @@
 /*   By: omimouni <omimouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 12:05:20 by omimouni          #+#    #+#             */
-/*   Updated: 2020/02/27 12:59:53 by omimouni         ###   ########.fr       */
+/*   Updated: 2020/02/27 13:33:45 by omimouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-long long	ft_show_nbr_read(t_config *con, int *sign,
+long	ft_show_nbr_read(t_config *con, int *sign,
 							int *length, int *n_zeroes)
 {
 	long tmp;
@@ -24,7 +24,7 @@ long long	ft_show_nbr_read(t_config *con, int *sign,
 		tmp = va_arg(*(con->vargs), int);
 	*sign = tmp < 0 ? 1 : 0;
 	if (*sign)
-		*length = ft_intlen(tmp*-1) + 1;
+		*length = ft_intlen(tmp * -1) + 1;
 	else
 		*length = ft_intlen(tmp);
 	*n_zeroes = 0;
@@ -60,9 +60,7 @@ int		ft_show_nbr_print_n(t_config *con)
 				*(con->n_zeroes) += 1;
 		}
 	}
-	if (print_n)
-		return (1);
-	return (0);
+	return (print_n == 1 ? 1 : 0);
 }
 
 void	ft_show_nbr_flag(t_config *con)
@@ -72,7 +70,8 @@ void	ft_show_nbr_flag(t_config *con)
 	i = 0;
 	if (con->flag == 0 || con->flag == '0')
 	{
-		if (con->flag == 0){
+		if (con->flag == 0)
+		{
 			while (i++ < con->width - *con->length - *con->n_zeroes)
 				ft_putchar(' ');
 		}
@@ -93,7 +92,7 @@ void	ft_show_print(t_config *con, long tmp, int print_n)
 	i = 0;
 	if (print_n)
 		ft_putchar('-');
-	while(i++ < *con->n_zeroes)
+	while (i++ < *con->n_zeroes)
 		ft_putchar('0');
 	if ((*con->sign && con->flag == '0') || (print_n && tmp < 0))
 		if (tmp == -2147483648)
@@ -112,30 +111,25 @@ void	ft_show_print(t_config *con, long tmp, int print_n)
 void	ft_show_nbr(t_config *con)
 {
 	long	tmp;
-	int	length;
-	int	sign;
-	int	i;
-	int	n_zeroes;
-	int	print_n;
+	int		length;
+	int		sign;
+	int		n_zeroes;
+	int		print_n;
 
 	tmp = ft_show_nbr_read(con, &sign, &length, &n_zeroes);
 	print_n = ft_show_nbr_print_n(con);
 	ft_show_nbr_flag(con);
 	if (con->has_precision && tmp == 0 && con->precision == 0)
-	{
 		if (con->width != 0)
 			ft_putchar(' ');
 		else
 			con->ret--;
-	}
 	else
 		ft_show_print(con, tmp, print_n);
-	i = 0;
+	print_n = 0;
 	if (con->flag == '-')
-	{
-		while (i++ < con->width - length - n_zeroes)
+		while (print_n++ < con->width - length - n_zeroes)
 			ft_putchar(' ');
-	}
 	if (con->width - length > 0)
 		con->ret += con->width;
 	else

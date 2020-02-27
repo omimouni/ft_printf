@@ -6,7 +6,7 @@
 /*   By: omimouni <omimouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 22:00:48 by omimouni          #+#    #+#             */
-/*   Updated: 2020/02/27 12:56:53 by omimouni         ###   ########.fr       */
+/*   Updated: 2020/02/27 14:08:02 by omimouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include <stdio.h>
 # include "utils/ft_utils.h"
 
 typedef struct	s_config{
@@ -39,6 +38,6 @@ void			ft_show(t_config *con);
 void			ft_show_pointer(t_config *con);
 void			ft_show_string(t_config *con);
 void			ft_show_hex(t_config *con);
-void 			ft_show_nbr(t_config *con);
+void			ft_show_nbr(t_config *con);
 void			ft_show_char(t_config *con);
 #endif

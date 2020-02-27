@@ -6,16 +6,15 @@
 /*   By: omimouni <omimouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 09:22:41 by omimouni          #+#    #+#             */
-/*   Updated: 2020/02/27 11:28:43 by omimouni         ###   ########.fr       */
+/*   Updated: 2020/02/27 13:42:48 by omimouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "ft_utils.h"
 
 void	ft_putnbr(int n)
 {
-	unsigned int 	tmp;
+	unsigned int	tmp;
 
 	tmp = n;
 	if (n < 0)
