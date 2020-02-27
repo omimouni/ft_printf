@@ -6,7 +6,7 @@
 /*   By: omimouni <omimouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 11:29:18 by omimouni          #+#    #+#             */
-/*   Updated: 2020/02/24 14:09:52 by omimouni         ###   ########.fr       */
+/*   Updated: 2020/02/27 12:05:18 by omimouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,10 @@
 void	ft_show_pointer(t_config *con)
 {
 	int		i;
-	char	*str;
 	int		length;
 	size_t	tmp;
 
-	str = NULL;
 	tmp = va_arg(*(con->vargs), size_t);
-	str = ft_itoh(tmp);
 	length = ft_csize(tmp);
 	i = 0;
 	if (!tmp && con->has_precision)
@@ -31,7 +28,7 @@ void	ft_show_pointer(t_config *con)
 			ft_putchar(' ');
 	ft_putstr("0x");
 	if (tmp != 0)
-		ft_printhex(str, 0, length);
+		ft_puthex(tmp, 0);
 	else if (!con->has_precision)
 		ft_putchar('0');
 	if (con->flag == '-')
@@ -41,7 +38,6 @@ void	ft_show_pointer(t_config *con)
 		con->ret += con->width;
 	else
 		con->ret += length + 2;
-	free(str);
 }
 
 void	ft_show_string(t_config *con)

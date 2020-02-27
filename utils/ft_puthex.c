@@ -6,7 +6,7 @@
 /*   By: omimouni <omimouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 18:42:56 by omimouni          #+#    #+#             */
-/*   Updated: 2020/02/23 14:46:07 by omimouni         ###   ########.fr       */
+/*   Updated: 2020/02/27 11:22:29 by omimouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,22 @@ char	*ft_itoh(size_t n)
 	if (n == 0)
 		str[i] = 0;
 	return (str);
+}
+
+void	ft_puthex(size_t n, int cap)
+{
+	int	tmp;
+
+	if (n/16 > 0)
+		ft_puthex(n/16, cap);
+	tmp = n % 16;
+	if (tmp >= 0 && tmp <= 9)
+		ft_putchar('0' + tmp);
+	else
+	{
+		if (cap)
+			ft_putchar(tmp - 10 + 'A');
+		else
+			ft_putchar(tmp - 10 + 'a');
+	}
 }

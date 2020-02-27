@@ -6,7 +6,7 @@
 /*   By: omimouni <omimouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 14:12:06 by omimouni          #+#    #+#             */
-/*   Updated: 2020/02/23 14:46:32 by omimouni         ###   ########.fr       */
+/*   Updated: 2020/02/27 11:27:10 by omimouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,8 @@ int		ft_strlen(char *str);
 char	*ft_itoh(size_t n);
 void	ft_printhex(char *str, int cap, int length);
 int		ft_csize(size_t n);
+void	ft_putnbr(int n);
+void	ft_putunbr(unsigned int n);
+int		ft_intlen(unsigned int n);
+void	ft_puthex(size_t n, int cap);
 #endif

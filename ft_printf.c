@@ -6,12 +6,12 @@
 /*   By: omimouni <omimouni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 22:00:25 by omimouni          #+#    #+#             */
-/*   Updated: 2020/02/24 14:21:56 by omimouni         ###   ########.fr       */
+/*   Updated: 2020/02/27 12:59:24 by omimouni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#define T "%1000c", 'a'
+#define T "%15.7d", -100
 
 void		ft_cleanup(t_config *con)
 {
@@ -20,6 +20,9 @@ void		ft_cleanup(t_config *con)
 	con->precision = 0;
 	con->specifier = 0;
 	con->has_precision = 0;
+	con->nbr = 0;
+	con->length = 0;
+	con->sign = 0;
 }
 
 t_config	ft_init_config(va_list *vargs)
@@ -34,6 +37,10 @@ t_config	ft_init_config(va_list *vargs)
 	tmp.precision = 0;
 	tmp.specifier = 0;
 	tmp.has_precision = 0;
+	tmp.nbr = 0;
+	tmp.length = 0;
+	tmp.sign = 0;
+	tmp.n_zeroes = 0;
 	return (tmp);
 }
 
@@ -63,7 +70,14 @@ int			ft_printf(char const *format, ...)
 
 // int main()
 // {
-// 	printf(T);
-// 	ft_printf(T);
-// 	system("leaks a.out");
+// 	int r, l;
+
+// 	printf("x");
+// 	r = printf(T);
+// 	printf("x");
+// 	printf("\n");	
+// 	printf("x");
+// 	l = ft_printf(T);	
+// 	printf("x");
+// 	printf("\n------\n og : %d ft : %d \n", r, l);
 // }
